@@ -18,8 +18,11 @@ class MQTT:
         if self.topic.endswith('/'):
             self.topic = self.topic[:-1]
         self.client = MQTTClient(client_id, server, port, username, password)
-        self.client.connect()
-
+        try:
+            self.client.connect()
+        except:
+            print("Não foi possível conectar ao broker")
+            
     def is_enabled(self):
         return self.enabled
 
