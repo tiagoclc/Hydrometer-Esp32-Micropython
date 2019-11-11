@@ -268,7 +268,8 @@ elif machine.reset_cause() == machine.DEEPSLEEP_RESET:
             }
             mqtt_data = ujson.dumps(hydrometer_dict)
             client = MQTT(settings)
-            client.publish(mqtt_data)
+            if wifi.is_connected():
+                client.publish(mqtt_data)
         # 5.2. Send Specific Gravity data & battery level to Fermenter ESP32 by HTTP
         else:
             machine_id = int.from_bytes(machine.unique_id(), 'big')
