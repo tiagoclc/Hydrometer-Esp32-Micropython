@@ -201,7 +201,7 @@ elif machine.reset_cause() == machine.DEEPSLEEP_RESET:
     # Turn on VPP to supply power for GY521 and allow battery voltage measurement
     vpp.on()
     # Initialize the peripherals
-    gy521, ds18, battery, wifi = initialization()
+    gy521, ds18, battery, wifi = initialization(init_gy521=True, init_ds18=True, init_bat=True, init_wifi=True)
     print('Entering Working Mode...')
     send_data_to_fermenter = settings['fermenterAp']['enabled']
     send_data_to_mqtt = settings['mqtt']['enabled']
